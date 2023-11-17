@@ -19,6 +19,7 @@ with open() as file:
         i = 1
 print(data)
 """
+"""
 import csv
 
 title = []
@@ -26,7 +27,7 @@ header = []
 data = []
 
 with open("Data næringer/omsetning.csv", "r", encoding="ISO-8859-1", newline='\r\n') as file:
-    reader = csv.reader(file, delimiter = ";")
+    csv_reader = csv.csv_reader(file, delimiter = ";")
     i = 0
     for row in file:
         if i == 0:
@@ -41,3 +42,24 @@ with open("Data næringer/omsetning.csv", "r", encoding="ISO-8859-1", newline='\
 print(title)
 print(header)
 print(data)
+"""
+import csv
+
+
+with open("Data næringer/omsetning.csv", mode='r', newline='', encoding='utf-8-sig') as file:
+    csv_reader = csv.reader(file, delimiter=';', skipinitialspace=True)
+    print("------------------------------")
+    for row in csv_reader:
+        print(row)
+    
+    # reset file pointer
+    file.seek(0)
+    
+    # skip header row
+    next(csv_reader)
+    
+    # sort data by first column
+    #sorted_list = sorted(csv_reader, key=lambda row: row[1] if len(row)>=2 else "")
+    print("------------------------------")
+    #for row in sorted_list:
+    #    print(row)
